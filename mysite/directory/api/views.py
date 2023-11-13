@@ -35,7 +35,7 @@ class UsersViewSet(viewsets.ModelViewSet):
     @action(detail=True, methods=["get"])
     def managers(self, request, pk):
         user = get_object_or_404(User, pk=pk)
-        users = managers = [user.reports_to] if user.reports_to else []
+        users = [user.reports_to] if user.reports_to else []
 
         page = self.paginate_queryset(users)
         if page is not None:
